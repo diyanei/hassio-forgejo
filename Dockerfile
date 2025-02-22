@@ -93,5 +93,6 @@ COPY rootfs /
 COPY s6-overlay /package/admin/s6-overlay-${S6_OVERLAY_VERSION}/
 
 RUN chmod 700 /etc/s6-overlay/s6-rc.d/forgejo/run /etc/s6-overlay/s6-rc.d/forgejo/finish
+RUN chown 1000:1000 /data
 
 ENTRYPOINT [ "/init" ]

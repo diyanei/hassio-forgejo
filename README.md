@@ -19,7 +19,7 @@ Happy giting !
 	1. Backup again your gitea server (on another disk for instance)
 	1. Be sure to backup it, remember.
 	1. on the Home Assistant host, go to /usr/share/hassio/addons/data and from there:
-		* do a copy from the gitea addon subdir (db21ed7f_gitea) to the forgejo one, for instance with the following command `sudo rsync -avn db21ed7f_gitea/ #forgejo#/` (remove the `-n` option to actually do it, this is the dry-run version).
+		* do a copy from the gitea addon subdir (db21ed7f_gitea) to the forgejo one, for instance with the following command `sudo rsync -avn db21ed7f_gitea/ dbabe1f1_forgejo/` (remove the `-n` option to actually do it, this is the dry-run version).
 	1. Then go on
 
 1. Start the add-on.
