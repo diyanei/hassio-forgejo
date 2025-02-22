@@ -1,0 +1,20 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start the example service
+# s6-overlay docs: https://github.com/just-containers/s6-overlay
+# ==============================================================================
+
+# Declare variables
+declare root_url
+root_url=$(bashio::config 'ROOT_URL')
+
+[[ -f ./setup ]] && source ./setup
+
+pushd /app/gitea >/dev/null
+if [ ! -z "${root_url}"]; then
+	bashio::log.info "Setting ROOT_URL to ${root_url}"
+	export ROOT_URL=${root_url}
+fi
+bashio::log.info "Starting the forgejo server ..."
+exec su-exec $USER /usr/local/bin/gitea web
+popd
