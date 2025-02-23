@@ -1,7 +1,5 @@
 #!/bin/bash
-if [ ! -d /data/gitea ]; then
-    mkdir -p /data/gitea
-fi
+
 if [ ! -d /data/git/.ssh ]; then
     mkdir -p /data/git/.ssh
 fi

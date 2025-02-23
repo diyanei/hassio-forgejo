@@ -6,15 +6,25 @@
 
 # Declare variables
 declare root_url
-root_url=$(bashio::config 'ROOT_URL')
+declare domain
 
-[[ -f ./setup ]] && source ./setup
+root_url=$(bashio::config 'ROOT_URL')
+domain=$(bashio::config 'DOMAIN')
+
+export SECRET_KEY=""
+
+[[ -f /etc/s6-overlay/s6-rc.d/forgejo/setup ]] && bashio::log.info "Running setup" && source /etc/s6-overlay/s6-rc.d/forgejo/setup
 
 pushd /app/gitea >/dev/null
-if [ ! -z "${root_url}"]; then
+if [ ! -z "${domain}" -a "${domain}" != "null" ]; then
+	bashio::log.info "Setting DOMAIN to ${domain}"
+	export DOMAIN=${domain}
+fi
+if [ ! -z "${root_url}" -a "${root_url}" != "null" ]; then
 	bashio::log.info "Setting ROOT_URL to ${root_url}"
 	export ROOT_URL=${root_url}
 fi
+
 bashio::log.info "Starting the forgejo server ..."
 exec su-exec $USER /usr/local/bin/gitea web
 popd
