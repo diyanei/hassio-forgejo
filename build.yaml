@@ -1,5 +1,5 @@
 ---
 build_from:
-  amd64: codeberg.org/forgejo/forgejo:10
-  aarch64: codeberg.org/forgejo/forgejo:10
-  armv7: codeberg.org/forgejo/forgejo:10
+  amd64: codeberg.org/forgejo/forgejo:13
+  aarch64: codeberg.org/forgejo/forgejo:13
+  armv7: codeberg.org/forgejo/forgejo:13
