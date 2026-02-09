@@ -24,7 +24,7 @@ if [ ! -z "${root_url}" -a "${root_url}" != "null" ]; then
 fi
 if [ ! -z "${internal_ssh_server}" -a "${internal_ssh_server}" == "true" ]; then
 	bashio::log.info "Starting internal SSH server"
-	export START_SSH_SERVER="true"
+	export FORGEJO__SERVER__START_SSH_SERVER="true"
 fi
 
 [[ -f /etc/s6-overlay/s6-rc.d/forgejo/setup ]] && bashio::log.info "Running setup" && source /etc/s6-overlay/s6-rc.d/forgejo/setup
