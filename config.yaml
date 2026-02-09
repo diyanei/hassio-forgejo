@@ -1,6 +1,7 @@
 name: "Forgejo"
-description: "Forgejo is a self-hosted lightweight software forge. Easy to install and low maintenance, it just does the job."
-version: "13.0.3"
+description: "Forgejo is a self-hosted lightweight software forge. Easy to install and low
+  maintenance, it just does the job."
+version: "13.0.3-1"
 slug: "forgejo"
 init: false
 arch:
@@ -28,10 +29,12 @@ options:
   ssl: false
   DOMAIN: homeassistant.local
   APP_NAME: "Forgejo for Home Assistant"
+  START_INTERNAL_SSH_SERVER: true
 schema:
   APP_NAME: str?
   DOMAIN: str?
   ROOT_URL: str?
+  START_INTERNAL_SSH_SERVER: bool
   keyfile: str?
   certfile: str?
   ssl: bool
@@ -39,6 +42,8 @@ configuration:
   ROOT_URL:
     name: Redefine the ROOT_URL variable in Forgejo server
     description: When set, defines the ROOT_URL variable in Forgejo server
+  START_INTERNAL_SSH_SERVER:
+    name: Start Forgejo internal SSH server
 webui: "[PROTO:ssl]://[HOST]:[PORT:3000]"
 devices:
   - /dev/dri
